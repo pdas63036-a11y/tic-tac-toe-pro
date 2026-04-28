@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="title">Tic Tac Toe</h1>
+
+    <section class="controls">
+      <div class="status" id="status">Player X's turn</div>
+      <div class="name-controls">
+        <label class="name-field">Player X Name
+          <input type="text" id="playerXName" placeholder="Player X">
+        </label>
+        <label class="name-field">Player O Name
+          <input type="text" id="playerOName" placeholder="Player O">
+        </label>
+        <button id="saveNamesBtn">Save Names</button>
+      </div>
+      <div class="buttons">
+        <button id="modeBtn">Mode: 2 Player</button>
+        <button id="difficultyBtn">Difficulty: Easy</button>
+        <button id="restartBtn">Restart Game</button>
+        <button id="resetScoresBtn">Reset Scores</button>
+      </div>
+
+      <div class="toggles">
+        <label class="switch">
+          <input type="checkbox" id="soundToggle" checked>
+          <span class="slider"></span>
+          <span class="label">Sound</span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" id="themeToggle">
+          <span class="slider"></span>
+          <span class="label">Dark</span>
+        </label>
+
+        <div class="volume">
+          <input type="range" id="volumeRange" min="0" max="1" step="0.01" value="0.6">
+        </div>
+      </div>
+    </section>
+
+    <section class="scoreboard">
+      <div class="score" id="scoreXWrap"><span class="score-label" id="labelX">Player X</span>: <span id="scoreX">0</span></div>
+      <div class="score" id="scoreOWrap"><span class="score-label" id="labelO">Player O</span>: <span id="scoreO">0</span></div>
+    </section>
+
+    <section class="board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+      <!-- Overlay for drawing the winning line -->
+      <div id="winLine" class="win-line" aria-hidden="true"></div>
+    </section>
+
+    <footer class="footer">Built with HTML, CSS &amp; JavaScript</footer>
+  </main>
+
+  <!-- Win / Draw popup overlay -->
+  <div id="winPopup" class="win-popup" aria-hidden="true">
+    <div class="win-card">
+      <h2 id="winText">Player X Wins!</h2>
+      <div class="win-actions">
+        <button id="playAgainBtn">Play Again</button>
+        <button id="closePopupBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
