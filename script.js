@@ -506,40 +506,4 @@ document.addEventListener('click', function initAudio(){ soundManager.init(); so
 if(playAgainBtn) playAgainBtn.addEventListener('click', () => { restartGame(); soundManager.playButton(); });
 if(closePopupBtn) closePopupBtn.addEventListener('click', () => { hideWinPopup(); soundManager.playButton(); });
 
-// --- Guide / Rules modal wiring ---
-const guideBtn = document.getElementById('guideBtn');
-const guidePopup = document.getElementById('guidePopup');
-const closeGuideBtn = document.getElementById('closeGuideBtn');
-
-function openGuide(){
-  if(!guidePopup) return;
-  guidePopup.classList.add('show');
-  guidePopup.setAttribute('aria-hidden','false');
-  document.querySelector('.app').classList.add('dimmed');
-  if(boardEl) boardEl.classList.add('glow');
-  soundManager.playButton();
-}
-
-function closeGuide(){
-  if(!guidePopup) return;
-  guidePopup.classList.remove('show');
-  guidePopup.setAttribute('aria-hidden','true');
-  document.querySelector('.app').classList.remove('dimmed');
-  if(boardEl) boardEl.classList.remove('glow');
-  soundManager.playButton();
-}
-
-if(guideBtn) guideBtn.addEventListener('click', () => { openGuide(); });
-if(closeGuideBtn) closeGuideBtn.addEventListener('click', () => { closeGuide(); });
-
-// close when clicking outside the card (overlay click)
-if(guidePopup) guidePopup.addEventListener('click', (e) => {
-  if(e.target === guidePopup) closeGuide();
-});
-
-// close on Escape key
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape' && guidePopup && guidePopup.classList.contains('show')){
-    closeGuide();
-  }
-});
+// Rules were moved to a separate `rules.html` page; guide link navigates there.
