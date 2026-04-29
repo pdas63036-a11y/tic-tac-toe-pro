@@ -196,3 +196,53 @@ body{
   .guide-card{padding:12px}
   .guide-content{max-height:60vh}
 }
+
+/* Accordion styles (Game Rules below board) */
+.accordion-wrap{display:flex;flex-direction:column;align-items:center;margin-top:24px;padding:0 8px;width:100%}
+.accordion{width:100%;max-width:600px}
+.accordion-tools{display:flex;gap:8px;justify-content:center}
+.tiny{padding:6px 10px;border-radius:8px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#021018;font-weight:700;cursor:pointer}
+.accordion-item{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;margin-bottom:12px;box-shadow:0 10px 30px rgba(2,6,23,0.45);overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+.accordion-header{width:100%;text-align:left;padding:12px 16px;font-weight:700;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;color:inherit}
+.accordion-header:hover{background:rgba(255,255,255,0.02)}
+.accordion-header:focus{outline:2px solid rgba(48,207,208,0.16);outline-offset:2px}
+.accordion-header::after{content:'▶';transform-origin:50% 50%;transition:transform .32s cubic-bezier(.2,.9,.2,1);opacity:0.9}
+.accordion-header[aria-expanded="true"]::after{transform:rotate(90deg);content:'▼'}
+.accordion-content{padding:0 16px;max-height:0;overflow:hidden;opacity:0;transition:max-height .36s cubic-bezier(.2,.9,.2,1),opacity .28s ease;padding-bottom:0}
+.accordion-content.open{opacity:1;padding:12px 16px 18px 16px}
+
+/* content inner formatting */
+.accordion-content ul,.accordion-content ol{margin:0;padding-left:18px;color:var(--muted)}
+
+/* fade-in + slight bounce when opening */
+@keyframes contentEnter{0%{transform:translateY(-6px);opacity:0}60%{transform:translateY(4px);opacity:1}100%{transform:none;opacity:1}}
+.accordion-item.open .accordion-content{animation:contentEnter .36s cubic-bezier(.2,.8,.2,1)}
+
+/* mobile tweaks */
+@media (max-width:480px){
+  .accordion{max-width:90%}
+  .accordion-header{padding:14px}
+  .accordion-content{padding:10px 14px}
+  .tiny{padding:8px 12px}
+}
+
+/* reveal animation when scrolled into view */
+.accordion-wrap{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.accordion-wrap.reveal{opacity:1;transform:none}
+
+@keyframes fadeInUpSmall{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
+
+/* Rules page specific styles */
+.rules-page .app{max-width:900px;padding:28px}
+.rules-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;box-shadow:0 18px 48px rgba(2,6,23,0.5);border:1px solid rgba(255,255,255,0.03);margin:20px auto}
+.rules-card h2{margin:0 0 10px 0;font-size:1.4rem}
+.rules-section{margin-bottom:14px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.01)}
+.back-btn{display:inline-block;margin-top:8px;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#021018;font-weight:700;text-decoration:none}
+.scroll-top{position:fixed;right:16px;bottom:16px;padding:10px 12px;border-radius:10px;background:rgba(0,0,0,0.5);color:#fff;border:0;cursor:pointer;display:none}
+.rules-page .rules-card{animation:fadeInUpSmall .5s ease both}
+
+@media (max-width:600px){
+  .rules-page .app{padding:16px}
+  .rules-card{padding:12px}
+  .rules-card h2{font-size:1.1rem}
+}
